@@ -1,0 +1,18 @@
+/**********************************************************************
+UDF that computes specific heat and sets the sensible enthalpy
+to the referenced value
+***********************************************************************/
+
+#include "udf.h"
+DEFINE_SPECIFIC_HEAT(Substrate_cp, T, Tref, h, yi)
+{
+real cp = 1071.;
+h = cp * (T - Tref);
+cp = 1071 + 0.156 * T + -3.44E+7 / (TT);
+return cp;
+}
+
+
+//고체의 logarithmic 물성을 정의하기 위해 UDF 사용
+
+//h는 entropy를 계산하는 변수임. cp와 상관 없음.
